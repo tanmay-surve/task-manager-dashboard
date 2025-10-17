@@ -37,20 +37,15 @@ public class TaskService {
         return taskRepository.search(q.trim(), pageable);
     }
 
-    // Create a new task
     public Task create(Task t) {
-        // Sanitize input
         t.setTitle(Sanitizer.sanitize(t.getTitle()));
         t.setDescription(Sanitizer.sanitize(t.getDescription()));
 
         Task saved = taskRepository.save(t);
 
-        // Create audit log for creation
         try {
-            // This now uses the ObjectMapper configured to handle Instant dates
             String json = mapper.writeValueAsString(saved);
             AuditLog log = new AuditLog();
-            // --- FIX: Using a simple, explicit action phrase guaranteed to contain 'create' ---
             log.setAction("Task Created");
             log.setTaskId(saved.getId());
             log.setUpdatedContent(json);
@@ -62,7 +57,6 @@ public class TaskService {
         return saved;
     }
 
-    // Update existing task
     public Optional<Task> update(Long id, Task updated) {
         return taskRepository.findById(id).map(existing -> {
             Map<String, String> changes = new HashMap<>();
@@ -83,7 +77,6 @@ public class TaskService {
 
             Task saved = taskRepository.save(existing);
 
-            // Only create audit log if something changed
             if (!changes.isEmpty()) {
                 try {
                     String json = mapper.writeValueAsString(changes);
@@ -106,7 +99,6 @@ public class TaskService {
         return taskRepository.findById(id).map(t -> {
             taskRepository.delete(t);
 
-            // Create audit log for deletion
             AuditLog log = new AuditLog();
             log.setAction("Delete Task");
             log.setTaskId(id);

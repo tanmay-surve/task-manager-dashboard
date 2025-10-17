@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Manager Dashboard</title>
-  <!-- Load Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Use Inter font -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
     body { font-family: 'Inter', sans-serif; }
@@ -15,10 +13,8 @@
 </head>
 <body class="bg-gray-100 min-h-screen">
 <div id="app" class="flex">
-  <!-- Sidebar -->
   <aside class="w-64 bg-emerald-700 text-white min-h-screen shadow-lg rounded-r-2xl p-6 hidden md:block">
     <h2 class="text-3xl font-extrabold mb-8 flex items-center">
-      <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
       Task Manager
     </h2>
     <nav class="space-y-2">
@@ -31,7 +27,6 @@
     </nav>
   </aside>
 
-  <!-- Main Content -->
   <main class="flex-1 p-4 md:p-8">
     <header class="flex flex-col md:flex-row justify-between items-center mb-6 space-y-4 md:space-y-0">
       <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
@@ -40,10 +35,8 @@
       </button>
     </header>
 
-    <!-- Search -->
     <input type="text" id="searchInput" placeholder="Search tasks by title or description..." class="w-full md:w-1/2 p-3 border border-gray-300 rounded-xl mb-6 shadow-sm focus:ring-emerald-500 focus:border-emerald-500 transition">
 
-    <!-- Tasks Section -->
     <div id="tasksSection" class="bg-white p-6 rounded-2xl shadow-xl">
       <h2 class="text-xl font-semibold mb-4 text-gray-700">Task List</h2>
       <div class="overflow-x-auto">
@@ -58,16 +51,13 @@
           </tr>
           </thead>
           <tbody id="taskTableBody" class="bg-white divide-y divide-gray-200">
-          <!-- Task rows will be inserted here -->
           </tbody>
         </table>
       </div>
       <div id="taskPagination" class="flex justify-center space-x-2 mt-6">
-        <!-- Pagination buttons will be inserted here -->
       </div>
     </div>
 
-    <!-- Logs Section -->
     <div id="logsSection" class="bg-white p-6 rounded-2xl shadow-xl hidden">
       <h2 class="text-xl font-semibold mb-4 text-gray-700">Audit Logs</h2>
       <div class="overflow-x-auto">
@@ -81,18 +71,15 @@
           </tr>
           </thead>
           <tbody id="logTableBody" class="bg-white divide-y divide-gray-200">
-          <!-- Log rows will be inserted here -->
           </tbody>
         </table>
       </div>
       <div id="logPagination" class="flex justify-center space-x-2 mt-6">
-        <!-- Pagination buttons will be inserted here -->
       </div>
     </div>
   </main>
 </div>
 
-<!-- Task Modal -->
 <div id="taskModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 hidden">
   <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md transform transition-all">
     <div class="flex justify-between items-center mb-4">
@@ -109,7 +96,6 @@
   </div>
 </div>
 
-<!-- Confirmation Modal (Replaces window.confirm) -->
 <div id="confirmationModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 hidden">
   <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm transform transition-all">
     <h3 class="text-xl font-bold mb-4 text-gray-800">Confirmation</h3>
@@ -121,9 +107,7 @@
   </div>
 </div>
 
-<!-- Notification Container -->
 <div id="notificationContainer" class="fixed bottom-4 right-4 z-50 space-y-2 max-w-xs overflow-hidden">
-  <!-- Notifications will appear here -->
 </div>
 
 <script src="app.js"></script>
